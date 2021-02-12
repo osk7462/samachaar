@@ -1,0 +1,212 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}">
+    <title>ourNews</title>
+</head>
+<body>
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="{% url 'topHeadLines' %} ">Top HeadLines</a>
+    <a href="#" onclick="openSearch()">Search <i class="fa fa-search" aria-hidden="true"></i></a>
+    <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeSearch()">&times;</a>
+        {#            #}
+        <br>
+
+
+        {#        <form style="width: 50%; margin: 0 auto;" action="{% url 'search' %}" method="POST">#}
+        {#        <div class="form-group">#}
+        {#                <label for="exampleFormControlInput1">Query</label>#}
+        {#                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter a search topic" name="query">#}
+        {#            </div>#}
+        {#            <br>#}
+        {#            <div class="form-group">#}
+        {#                <label for="exampleFormControlSelect1">Languages</label>#}
+        {#                <select class="form-control" id="exampleFormControlSelect1" name="language">#}
+
+        {#                </select>#}
+        {#            </div>#}
+        {#            <br>#}
+        {#            <div class="form-group">#}
+        {#                <label for="exampleFormControlSelect2">Sort By</label>#}
+        {#                <select class="form-control" id="exampleFormControlSelect2" name="sortBy">#}
+        {#                </select>#}
+        {#            </div>#}
+        {#            <br>#}
+        {#            <div class="form-group">#}
+        {#                <label for="exampleFormControlSelect3">From</label>#}
+        {#                <input type="date" class="form-control" id="exampleFormControlSelect3" name="from">#}
+        {#            </div>#}
+        {##}
+        {#            <div class="form-group">#}
+        {#                <label for="exampleFormControlSelect4">To</label>#}
+        {#                <input type="date" class="form-control" id="exampleFormControlSelect4" name="to">#}
+        {#            </div>#}
+        {##}
+        {#            <div class="form-group">#}
+        {#                <input type="submit" value="submit" class="btn btn-primary form-control">#}
+        {#            </div>#}
+        {##}
+        {#        </form>#}
+
+        <div class="container1">
+            <form action="{% url 'search' %}" method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-25">
+                        <label for="query">query</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="query" name="query" placeholder=" Enter a keyword or phrase like Apple, tom cruise">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="language">language</label>
+                    </div>
+                    <div class="col-75">
+                        <select id="language" name="language">
+                            <option value="en">en</option>
+                            <option value="ar">ar</option>
+                            <option value="de">de</option>
+                            <option value="es">es</option>
+                            <option value="fr">fr</option>
+                            <option value="he">he</option>
+                            <option value="it">it</option>
+                            <option value="de">nl</option>
+                            <option value="no">no</option>
+                            <option value="pt">pt</option>
+                            <option value="ru">ru</option>
+                            <option value="se">se</option>
+                            <option value="ud">ud</option>
+                            <option value="zh">zh</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="sortBy">Sort by</label>
+                    </div>
+                    <div class="col-75">
+                        <select name="sortBy" id="sortBy">
+                            <option value="relevancy">relevancy</option>
+                            <option value="popularity">popularity</option>
+                            <option value="publishedAt">publishedAt</option>
+                        </select>
+
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+        {#            #}
+
+
+    </div>
+
+
+    <a href="#" onclick="showHideToggel('hide', 'country-sub-menu')"> Country</a>
+    <div id="country-sub-menu" class="sub-menu hide">
+        <hr>
+        <a href="{% url 'home' 'ae' %}">ae</a>
+        <a href="{% url 'home' 'ar' %}">ar</a>
+        <a href="{% url 'home' 'at' %}">at</a>
+        <a href="{% url 'home' 'au' %}">au</a>
+        <a href="{% url 'home' 'be' %}">be</a>
+        <a href="{% url 'home' 'bg' %}">bg</a>
+        <a href="{% url 'home' 'br' %}">br</a>
+        <a href="{% url 'home' 'ca' %}">ca</a>
+        <a href="{% url 'home' 'ch' %}">ch</a>
+        <a href="{% url 'home' 'cn' %}">cn</a>
+        <a href="{% url 'home' 'co' %}">co</a>
+        <a href="{% url 'home' 'cu' %}">cu</a>
+        <a href="{% url 'home' 'cz' %}">cz</a>
+        <a href="{% url 'home' 'de' %}">de</a>
+        <a href="{% url 'home' 'eg' %}">eg</a>
+        <a href="{% url 'home' 'fr' %}">fr</a>
+        <a href="{% url 'home' 'gb' %}">gb</a>
+        <a href="{% url 'home' 'gr' %}">gr</a>
+        <a href="{% url 'home' 'hk' %}">hk</a>
+        <a href="{% url 'home' 'hu' %}">hu</a>
+        <a href="{% url 'home' 'id' %}">id</a>
+        <a href="{% url 'home' 'ie' %}">ie</a>
+        <a href="{% url 'home' 'il' %}">il</a>
+        <a href="{% url 'home' 'in' %}">in</a>
+        <a href="{% url 'home' 'it' %}">it</a>
+        <a href="{% url 'home' 'jp' %}">jp</a>
+        <a href="{% url 'home' 'kr' %}">kr</a>
+        <a href="{% url 'home' 'lt' %}">lt</a>
+        <a href="{% url 'home' 'lv' %}">lv</a>
+        <a href="{% url 'home' 'ma' %}">ma</a>
+        <a href="{% url 'home' 'mx' %}">mx</a>
+        <a href="{% url 'home' 'my' %}">my</a>
+        <a href="{% url 'home' 'ng' %}">ng</a>
+        <a href="{% url 'home' 'nl' %}">nl</a>
+        <a href="{% url 'home' 'no' %}">no</a>
+        <a href="{% url 'home' 'nz' %}">nz</a>
+        <a href="{% url 'home' 'ph' %}">ph</a>
+        <a href="{% url 'home' 'pl' %}">pl</a>
+        <a href="{% url 'home' 'pt' %}">pt</a>
+        <a href="{% url 'home' 'ro' %}">ro</a>
+        <a href="{% url 'home' 'rs' %}">rs</a>
+        <a href="{% url 'home' 'ru' %}">ru</a>
+        <a href="{% url 'home' 'sa' %}">sa</a>
+        <a href="{% url 'home' 'se' %}">se</a>
+        <a href="{% url 'home' 'sg' %}">sg</a>
+        <a href="{% url 'home' 'si' %}">si</a>
+        <a href="{% url 'home' 'sk' %}">sk</a>
+        <a href="{% url 'home' 'th' %}">th</a>
+        <a href="{% url 'home' 'tr' %}">tr</a>
+        <a href="{% url 'home' 'tw' %}">tw</a>
+        <a href="{% url 'home' 'ua' %}">ua</a>
+        <a href="{% url 'home' 'us' %}">us</a>
+        <a href="{% url 'home' 've' %}">ve</a>
+        <a href="{% url 'home' 'za' %}">za</a>
+
+
+        <hr>
+    </div>
+    <a href="#" onclick="showHideToggel('hide', 'category-sub-menu')"> Category</a>
+    <div id="category-sub-menu" class="sub-menu hide category">
+        <hr>
+        <a href="{% url 'home' 'business' %}">business</a>
+        <a href="{% url 'home' 'entertainment' %}">entertainment</a>
+        <a href="{% url 'home' 'health' %}">health</a>
+        <a href="{% url 'home' 'science' %}">science</a>
+        <a href="{% url 'home' 'sports' %}">sports</a>
+        <a href="{% url 'home' 'technology' %}">technology</a>
+        <hr>
+    </div>
+    <a href="{% url 'contact' %}">Contact</a>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+</div>
+<div id="main">
+    <nav>
+        <span id="span" style="
+        position: fixed; font-size:30px;cursor:pointer;margin-top: 0px; margin-left: 0px;" onclick="openNav()">&#9776;</span>
+    </nav>
+    <br>
+    <br>
+    {% block content %} {% endblock content %}
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+</div>
+
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'bootstrap/bootstrap.min.js' %}"></script>
+
+</body>
+</html> 

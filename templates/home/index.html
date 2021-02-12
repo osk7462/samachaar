@@ -1,0 +1,45 @@
+{% extends 'home/base.html' %}
+{% block content %}
+    {% if news %}
+        {% for article in news %}
+
+            <div class="card mb-4"
+                 style="max-width: 920px; border-radius: 10px; box-shadow: 2px 2px rgb(246, 240, 240); font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;">
+                <div class="row no-gutters">
+                    <div class="col-md-5">
+                        <img src="{{ article.urlToImage }}"
+                             class="card-img"
+                             id="img" alt="..."
+                             style="height: 100%; width:100%;">
+                    </div>
+                    <div class="col-md-7">
+                        <div class="card-body">
+                            <p class="title card-title">
+                                {{ article.title }}
+                                <br>
+                                <span class="author card-text"><small class="text-muted"><b> <i>{{ article.author }}/{{ article.source.name }}/{{ article.publishedAt }}</i></b></small></span>
+                                <br>
+                            <p class="content card-text text-muted">
+                                {{ article.description }}
+                            </p>
+                            <a class="source-link  text-muted" href="{{ article.url }}" class="text-muted" target="_blank">read more at {{ article.source.name }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+    {% else %}
+        <div class="result" style="
+
+                                width: 30%;
+                                height: 50%;
+                                margin: 20px auto;
+                                {#background: silver;#}
+                                text-align: center;">
+            <h2>Nothing found regarding your query.</h2>
+        </div>
+    {% endif %}
+
+
+{% endblock content %}

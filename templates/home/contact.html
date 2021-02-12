@@ -1,0 +1,55 @@
+{% extends 'home/base.html' %}
+{% block content %}
+    {% if not contact %}
+        <div class="container">
+            <form action="{% url 'contact' %}" method="post">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-25">
+                        <label for="name">Name</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="name" name="name" placeholder="Your name..">
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-25">
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="email" name="email" placeholder="Your email..">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-25">
+                        <label for="subject">Subject</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="subject" name="subject" placeholder="Subject">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-25">
+                        <label for="description">Description</label>
+                    </div>
+                    <div class="col-75">
+                        <textarea id="description" name="description" placeholder="Write something.." style="height:200px"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+        {% else %}
+            <p>
+                name: {{contact.name}}
+                email: {{contact.email}}
+                subject: {{contact.subject}}
+                description: {{contact.description}}
+            </p>
+            {% endif %}
+{% endblock %}
