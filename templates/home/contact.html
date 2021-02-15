@@ -2,6 +2,7 @@
 {% block content %}
     {% if not contact %}
         <div class="container">
+           <div class="LI-profile-badge"  data-version="v1" data-size="medium" data-locale="en_US" data-type="vertical" data-theme="light" data-vanity="osk7462"><a class="LI-simple-link" href='https://in.linkedin.com/in/osk7462?trk=profile-badge'>Osama Khan</a></div>
             <form action="{% url 'contact' %}" method="post">
                 {% csrf_token %}
                 <div class="row">
