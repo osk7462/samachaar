@@ -20,41 +20,6 @@
         <br>
 
 
-        {#        <form style="width: 50%; margin: 0 auto;" action="{% url 'search' %}" method="POST">#}
-        {#        <div class="form-group">#}
-        {#                <label for="exampleFormControlInput1">Query</label>#}
-        {#                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter a search topic" name="query">#}
-        {#            </div>#}
-        {#            <br>#}
-        {#            <div class="form-group">#}
-        {#                <label for="exampleFormControlSelect1">Languages</label>#}
-        {#                <select class="form-control" id="exampleFormControlSelect1" name="language">#}
-
-        {#                </select>#}
-        {#            </div>#}
-        {#            <br>#}
-        {#            <div class="form-group">#}
-        {#                <label for="exampleFormControlSelect2">Sort By</label>#}
-        {#                <select class="form-control" id="exampleFormControlSelect2" name="sortBy">#}
-        {#                </select>#}
-        {#            </div>#}
-        {#            <br>#}
-        {#            <div class="form-group">#}
-        {#                <label for="exampleFormControlSelect3">From</label>#}
-        {#                <input type="date" class="form-control" id="exampleFormControlSelect3" name="from">#}
-        {#            </div>#}
-        {##}
-        {#            <div class="form-group">#}
-        {#                <label for="exampleFormControlSelect4">To</label>#}
-        {#                <input type="date" class="form-control" id="exampleFormControlSelect4" name="to">#}
-        {#            </div>#}
-        {##}
-        {#            <div class="form-group">#}
-        {#                <input type="submit" value="submit" class="btn btn-primary form-control">#}
-        {#            </div>#}
-        {##}
-        {#        </form>#}
-
         <div class="container1">
             <form action="{% url 'search' %}" method="POST">
                 {% csrf_token %}
